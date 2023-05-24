@@ -30,8 +30,8 @@ describe('Assignment 2 - Correction', () => {
   }) 
 
   
-  //afterEach(() => {
-  // cy.get('span.MuiTypography-root').contains('Logout').click()
-  //})
+  afterEach(() => {
+   cy.get('span.MuiTypography-root').contains('Logout').click()
+  })
 
 })
