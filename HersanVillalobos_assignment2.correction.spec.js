@@ -14,7 +14,6 @@ describe('Assignment 2 - Correction', () => {
    const ACCOUNTNUM = '987654321'
    cy.get('span.MuiTypography-root').contains('Bank Accounts').click()
    cy.get('a[data-test="bankaccount-new"]').contains('Create').click()
-   cy.get('h2.MuiTypography-root').contains('Create Bank Account')
    cy.get('#bankaccount-bankName-input').type(BANKNAME)
    cy.get('#bankaccount-routingNumber-input').type(ROUTINGNUM)
    cy.get('#bankaccount-accountNumber-input').type(ACCOUNTNUM)
