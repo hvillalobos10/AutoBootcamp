@@ -1,0 +1,45 @@
+/// <reference types="cypress" />
+export class create_delete_account {
+    url = 'http://localhost:3000';
+  
+    elements = {
+      getBankAccountsBtn: () => 
+       cy.get('span.MuiTypography-root').contains('Bank Accounts'),
+      getCreateBtn: () => 
+       cy.get('a[data-test="bankaccount-new"]').contains('Create'),
+      getBankNameField: () => 
+       cy.get('#bankaccount-bankName-input'),
+      getRoutingNumField: () =>
+       cy.get('#bankaccount-routingNumber-input'),
+      getAccountNumField: () => 
+       cy.get('#bankaccount-accountNumber-input'),
+      getSaveBtn: () =>
+       cy.get('button[tabindex="0"]').contains('Save'),
+      getCreatedAccountName: () =>
+       cy.get('div.MuiGrid-root p'),
+      getDeletedAccountName: () =>
+       cy.get('div.MuiGrid-root p'),
+      getDeleteBtn: () =>
+       cy.get('div.MuiGrid-root p').contains('BANKO')
+         .parents('[data-test*="bankaccount-list-item-"]')
+         .within (() => 
+          cy.get('[data-test="bankaccount-delete"]')),
+    }
+      
+    createaccount (bankaccount, routingNumber, accountNumber) {
+      this.elements.getBankAccountsBtn().click()
+      this.elements.getCreateBtn().click()
+      this.elements.getBankNameField().clear().type(bankaccount)
+      this.elements.getRoutingNumField().clear().type(routingNumber)
+      this.elements.getAccountNumField().clear().type(accountNumber)
+      this.elements.getSaveBtn().click()
+    }
+
+    deleteaccount (bankaccount, routingNumber, accountNumber) {
+      this.elements.getBankAccountsBtn().click()
+      this.elements.getDeleteBtn().contains('Delete').click()
+    }
+}
+  
+export const New_account_creation_deletion = new create_delete_account()
+
